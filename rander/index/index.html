@@ -6,7 +6,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
-		<div id="app">{{tittle}}
+		<div id="app">
+			<div class="tittle">我的音乐库</div>
+			<div class="card-btn">歌曲</div>
+			<div class="card-btn">歌手</div>
+			<div class="card-btn">专辑</div>
 			<ul class="list" v-if="musicList.length!=0">
 				<li class="item" v-for="(item,index) in musicList" v-bind:key="index"></li>
 			</ul>

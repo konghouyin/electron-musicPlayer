@@ -20,6 +20,8 @@
     "electron": "^6.0.7"
   },
   "dependencies": {
+    "audio-loader": "^1.0.3",
+    "id3js": "^2.1.1",
     "nodemon": "^1.19.2"
   }
 }
