@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#app {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.tittle {
+	font-size: 36px;
+	margin: 10px;
+}
+
+.card-btn {
+	font-size: 24px;
+	color: #999;
+	display: inline-block;
+	margin: 0 6px;
+	padding: 0 8px;
+}
+.plus{
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    float: right;
+    margin-right: 16px;
+}
+
+.line {
+	height:1px;
+	background-color: #ccc;
+}
+
+.active {
+	color: #000;
+	border-bottom: 2px solid blue;
+}
+
+.error{
+	margin: 30px;
+	font-size: 20px;
+}
+
+.foot{
+	width:100%;
+	background: #0000FF;
+	height: 10px;
+	position: fixed;
+	bottom: 0;
+}

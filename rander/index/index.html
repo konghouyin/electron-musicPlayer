@@ -3,18 +3,29 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>本地音乐播放器</title>
+		<link rel="stylesheet" type="text/css" href="../../assets/font_1386901_4o9v2ugytk9/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
 		<div id="app">
 			<div class="tittle">我的音乐库</div>
-			<div class="card-btn">歌曲</div>
+			<div class="card-btn active">歌曲</div>
 			<div class="card-btn">歌手</div>
 			<div class="card-btn">专辑</div>
+			<div class="plus iconfont iconwenjian" @click="addMusic"></div>
+			<div class="line"></div>
 			<ul class="list" v-if="musicList.length!=0">
 				<li class="item" v-for="(item,index) in musicList" v-bind:key="index"></li>
 			</ul>
 			<div v-else class="error">目前没有音乐，赶快添加吧！</div>
+			<div class="foot">
+				<div class="line"></div>
+				<div class="left"></div>
+				<div class="ctrl"></div>
+				<div class="message"></div>
+				<div class="right"></div>
+			</div>
 		</div>
 		<script src="index.js" type="text/javascript" charset="utf-8"></script>
 	</body>

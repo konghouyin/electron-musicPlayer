@@ -1,8 +1,14 @@
+const {ipcRenderer} = require('electron');
+
 var app = new Vue({
   el: '#app',
   data: {
-    tittle: 'Hello Vue!',
 	musicList: ""
+  },
+  methods:{
+	  addMusic(){
+		  ipcRenderer.send('addMusic');
+	  }
   }
 })
 

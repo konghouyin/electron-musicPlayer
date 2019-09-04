@@ -28,7 +28,6 @@ class Storage {
 		fs.writeFile(path, JSON.stringify(this.obj),'utf8', (err) => {
 			if (err) {
 				throw err
-				//没有文件创建新文件
 			} 
 		})
 	}
