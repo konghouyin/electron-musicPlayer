@@ -15,16 +15,9 @@ app.on('ready', function() {
 })
 
 ipcMain.on('addMusic', async function() {
-	directory = await dialog.showOpenDialog({title:"请选择文件夹",properties: ['openDirectory'] })
-	fs.readdir(directory.filePaths[0],(err,files)=>{
-		if(err) throw err
-		let reg = /.(mp3|m4a|acc|flac)$/i
-		console.log(files.filter(function(item){
-			if(reg.test(item)){
-				return item
-			}
-		}))
-	})
+	let directory = await dialog.showOpenDialog({title:"请选择文件夹",properties: ['openDirectory'] })
+	let musicCheck = await getAllMusic(directory)
+	console.log(musicCheck)
 	new addWindow({
 		minWidth: 500,
 		minHeight: 400,
@@ -32,3 +25,19 @@ ipcMain.on('addMusic', async function() {
 		height: 400
 	}, './rander/add/add.html')
 })
+
+
+function getAllMusic(directory){
+	return new Promise((resolve,reject)=>{
+		fs.readdir(directory.filePaths[0],(err,files)=>{
+			if(err) throw err
+			let reg = /.(mp3|m4a|acc|flac)$/i
+			resolve ( files.filter(function(item){
+				if(reg.test(item)){
+					return item
+				}
+			}))
+		})
+	})
+}
+//通过node筛选路径下所有的音频文件
