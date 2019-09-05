@@ -1,13 +1,34 @@
-const load = require('id3js')
+const mp3Load = require('id3js')
 class audioLoad {
 	constructor(arg) {
 
 	}
 
 	check(path) {
-		load.fromPath(path).then(function(res) {
-			return (audioLoad.arrayBufferToBase64(res.images[0].data)) // => <AudioBuffer>
+		return new Promise(async (resolve, reject) => {
+			let reg = /.(mp3)$/i
+			if (reg.test(path)) {
+				let a = await audioLoad.mp3Check(path)
+				//console.log('q',a)
+				resolve(a)
+			} else {
+				resolve(audioLoad.otherCheck(path))
+			}
 		})
+	}
+
+
+	static mp3Check(path) {
+		return new Promise((resolve, reject) => {
+			mp3Load.fromPath(path).then(function(res) {
+				//console.log(res)
+				resolve(res) // => <AudioBuffer>
+			})
+		})
+	}
+
+	static otherCheck(path) {
+		return null
 	}
 
 	static arrayBufferToBase64() {
@@ -49,7 +70,10 @@ class audioLoad {
 		return "data:image/jpeg;base64," + base64;
 	}
 }
+
 module.exports = {
 	MusicLoader: audioLoad
 }
-//支持的音频格式有:MP3,aac,flac,m4a
+
+//支持播放的的音频格式有:MP3,aac,flac,m4a
+//支持解析的音频格式有：MP3
