@@ -8,9 +8,7 @@ class audioLoad {
 		return new Promise(async (resolve, reject) => {
 			let reg = /.(mp3)$/i
 			if (reg.test(path)) {
-				let a = await audioLoad.mp3Check(path)
-				//console.log('q',a)
-				resolve(a)
+				resolve(await audioLoad.mp3Check(path))
 			} else {
 				resolve(audioLoad.otherCheck(path))
 			}
@@ -21,8 +19,13 @@ class audioLoad {
 	static mp3Check(path) {
 		return new Promise((resolve, reject) => {
 			mp3Load.fromPath(path).then(function(res) {
-				//console.log(res)
-				resolve(res) // => <AudioBuffer>
+				console.log(res)
+				resolve({
+					title: res.title,
+					album: res.album,
+					artist: res.artist,
+					image:res.images.length==0?"":audioLoad.arrayBufferToBase64(res.images[0].data)
+				}) 
 			})
 		})
 	}
@@ -31,7 +34,7 @@ class audioLoad {
 		return null
 	}
 
-	static arrayBufferToBase64() {
+	static arrayBufferToBase64(raw) {
 		var base64 = '';
 		var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 		var bytes = new Uint8Array(raw);

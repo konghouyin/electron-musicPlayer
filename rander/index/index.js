@@ -7,7 +7,7 @@ var app = new Vue({
   },
   methods:{
 	  addMusic(){
-		  ipcRenderer.send('addMusic');
+		  ipcRenderer.send('addMusicDialog');
 	  }
   }
 })

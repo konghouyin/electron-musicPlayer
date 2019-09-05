@@ -25,7 +25,7 @@ app.on('ready', function() {
 	}, './rander/index/index.html')
 })
 
-ipcMain.on('addMusic', async function(event) {
+ipcMain.on('addMusicDialog', async function(event) {
 	let directory = await dialog.showOpenDialog({
 		title: "请选择文件夹",
 		properties: ['openDirectory']
@@ -43,7 +43,6 @@ ipcMain.on('addMusic', async function(event) {
 		event.sender.send('TouchMusicAnalysis',musicAnalysis)
 	})
 })
-
 
 
 

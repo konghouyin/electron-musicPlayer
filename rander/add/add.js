@@ -2,19 +2,16 @@ const {
 	ipcRenderer
 } = require('electron');
 
-ipcRenderer.on('analysisMusic', function(music) {
-	consoel.log(345)
-})
 
 var app = new Vue({
 	el: '#app',
 	data: {
-		title: "ss"
+		musicList: []
 	},
 	mounted() {
 		ipcRenderer.send('getMusicAnalysis');
-		ipcRenderer.on('TouchMusicAnalysis', function(event,msg) {
-			console.log(msg)
+		ipcRenderer.on('TouchMusicAnalysis', (event,msg) => {
+			this.musicList = msg
 		})
 	}
 

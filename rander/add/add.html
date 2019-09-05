@@ -9,7 +9,23 @@
 	</head>
 	<body>
 		<div id="app">
-			{{title}}
+			<div class="title">识别到您选择文件以下有相关音乐</div>
+			<div class="tip">请选择需要添加的音乐，点击导入即可将所选音乐导入播放器</div>
+			<div class="musicList" v-if="musicList.length!=0">
+				<div class="muiscItem" v-for="item in musicList">
+					<div class="choose"></div>
+					<div class="img"></div>
+					<div class="name">{{item.name}}</div>
+					<div class="album"></div>
+					<div class="artist"></div>
+					<div class="duration"></div>
+				</div>
+			</div>
+			<div class="error" v-else>当前文件夹下没有支持的音乐文件</div>
+			<div class="foot">
+				<div class="cancal">放弃导入</div>
+				<div class="addbtn">导入音乐</div>
+			</div>
 		</div>
 		<script src="./add.js"></script>
 	</body>
