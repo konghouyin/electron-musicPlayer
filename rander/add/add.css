@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.tittle {
+	font-size: 24px;
+	margin: 10px;
+}
+
+.tip{
+	font-size: 18px;
+	margin: 10px;
+}
+
+.choose{
+	font-size: 24px;
+	margin: 14px;
+}
+
+.muiscItem>div{
+	display: inline-block;
+}
